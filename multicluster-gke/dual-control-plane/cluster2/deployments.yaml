@@ -63,19 +63,19 @@ spec:
       containers:
       - env:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
-          value: productcatalogservice.default.svc.cluster.local:3550
+          value: productcatalogservice.hipster-shop.svc.cluster.local:3550
         - name: CURRENCY_SERVICE_ADDR
-          value: currencyservice.default.global:7000
+          value: currencyservice.hipster-shop.cluster-1:7000
         - name: CART_SERVICE_ADDR
-          value: cartservice.default.svc.cluster.local:7070
+          value: cartservice.hipster-shop.svc.cluster.local:7070
         - name: RECOMMENDATION_SERVICE_ADDR
-          value: recommendationservice.default.svc.cluster.local:8080
+          value: recommendationservice.hipster-shop.svc.cluster.local:8080
         - name: SHIPPING_SERVICE_ADDR
-          value: shippingservice.default.global:50051
+          value: shippingservice.hipster-shop.cluster-1:50051
         - name: CHECKOUT_SERVICE_ADDR
-          value: checkoutservice.default.global:5050
+          value: checkoutservice.hipster-shop.cluster-1:5050
         - name: AD_SERVICE_ADDR
-          value: adservice.default.global:9555
+          value: adservice.hipster-shop.cluster-1:9555
         image: gcr.io/google-samples/microservices-demo/frontend:v0.2.0
         livenessProbe:
           httpGet:
@@ -210,7 +210,7 @@ spec:
       containers:
       - env:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
-          value: productcatalogservice.default.svc.cluster.local:3550
+          value: productcatalogservice.hipster-shop.svc.cluster.local:3550
         image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.2.0
         livenessProbe:
           exec:
