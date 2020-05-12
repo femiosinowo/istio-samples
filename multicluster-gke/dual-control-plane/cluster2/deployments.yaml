@@ -38,6 +38,8 @@ spec:
           value: "frontend:80"
         - name: USERS
           value: "10"
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         resources:
           requests:
             cpu: 300m
@@ -45,6 +47,14 @@ spec:
           limits:
             cpu: 500m
             memory: 512Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
 ---
 # [START istio_dual_control_plane_cluster2_deployment_frontend]
 apiVersion: apps/v1
@@ -76,6 +86,8 @@ spec:
           value: checkoutservice.hipster-shop.cluster-1:5050
         - name: AD_SERVICE_ADDR
           value: adservice.hipster-shop.cluster-1:9555
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         image: gcr.io/google-samples/microservices-demo/frontend:v0.2.0
         livenessProbe:
           httpGet:
@@ -103,6 +115,14 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
 # [END istio_dual_control_plane_cluster2_deployment_frontend]
 ---
 # [START istio_dual_control_plane_cluster2_deployment_productcatalogservice]
@@ -121,6 +141,9 @@ spec:
     spec:
       containers:
       - image: gcr.io/google-samples/microservices-demo/productcatalogservice:v0.2.0
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         livenessProbe:
           exec:
             command:
@@ -141,6 +164,14 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
       terminationGracePeriodSeconds: 5
 # [END istio_dual_control_plane_cluster2_deployment_productcatalogservice]
 ---
@@ -166,6 +197,8 @@ spec:
           value: '7070'
         - name: LISTEN_ADDR
           value: 0.0.0.0
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         image: gcr.io/google-samples/microservices-demo/cartservice:v0.2.0
         livenessProbe:
           exec:
@@ -190,6 +223,14 @@ spec:
           requests:
             cpu: 200m
             memory: 64Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
       terminationGracePeriodSeconds: 5
 # [END istio_dual_control_plane_cluster2_deployment_cartservice]
 ---
@@ -211,6 +252,8 @@ spec:
       - env:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
           value: productcatalogservice.hipster-shop.svc.cluster.local:3550
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.2.0
         livenessProbe:
           exec:
@@ -234,6 +277,14 @@ spec:
           requests:
             cpu: 100m
             memory: 220Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
       terminationGracePeriodSeconds: 5
 # [END istio_dual_control_plane_cluster2_deployment_recommendationservice]
 ---
