@@ -22,6 +22,7 @@ spec:
   ports:
   - name: grpc
     port: 8080
+    protocol: TCP
     targetPort: 8080
   selector:
     app: recommendationservice
@@ -37,6 +38,7 @@ spec:
   ports:
   - name: http
     port: 80
+    protocol: TCP
     targetPort: 8080
   selector:
     app: frontend
@@ -52,6 +54,7 @@ spec:
   ports:
   - name: grpc
     port: 3550
+    protocol: TCP
     targetPort: 3550
   selector:
     app: productcatalogservice
@@ -67,6 +70,7 @@ spec:
   ports:
   - name: grpc
     port: 7070
+    protocol: TCP
     targetPort: 7070
   selector:
     app: cartservice
