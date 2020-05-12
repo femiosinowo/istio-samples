@@ -103,9 +103,9 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
-          volumeMounts:
-            - mountPath: /google/
-              name: google-volume
+        volumeMounts:
+          - mountPath: /google/
+            name: google-volume
       volumes:
         - configMap:
             defaultMode: 420
@@ -154,9 +154,9 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
-          volumeMounts:
-            - mountPath: /google/
-              name: google-volume
+        volumeMounts:
+         - mountPath: /google/
+           name: google-volume
       volumes:
         - configMap:
             defaultMode: 420
@@ -207,9 +207,9 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
-          volumeMounts:
-            - mountPath: /google/
-              name: google-volume
+        volumeMounts:
+          - mountPath: /google/
+            name: google-volume
       volumes:
         - configMap:
             defaultMode: 420
@@ -258,9 +258,9 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
-          volumeMounts:
-            - mountPath: /google/
-              name: google-volume
+        volumeMounts:
+         - mountPath: /google/
+           name: google-volume
       volumes:
         - configMap:
             defaultMode: 420
@@ -313,9 +313,9 @@ spec:
           requests:
             cpu: 200m
             memory: 180Mi
-          volumeMounts:
-            - mountPath: /google/
-              name: google-volume
+        volumeMounts:
+          - mountPath: /google/
+            name: google-volume
       volumes:
         - configMap:
             defaultMode: 420
