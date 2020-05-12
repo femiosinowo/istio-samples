@@ -23,9 +23,9 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:
-    - '*'
+    - 'frontend-hipster-shop.k8s-istio-002.local'
     port:
-      name: http
+      name: http-frontend
       number: 80
       protocol: HTTP
 # [END istio_dual_control_plane_cluster2_gateway_frontend_gateway]
@@ -39,7 +39,7 @@ spec:
   gateways:
   - frontend-gateway
   hosts:
-  - '*'
+  - 'frontend-hipster-shop.k8s-istio-002.local'
   http:
   - route:
     - destination:
