@@ -80,6 +80,8 @@ spec:
           value: currencyservice.default.svc.cluster.local:7000
         - name: CART_SERVICE_ADDR
           value: cartservice.hipster-shop.cluster-2:7070
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.2.0
         livenessProbe:
           exec:
@@ -101,6 +103,14 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
 # [END istio_dual_control_plane_cluster1_deployment_checkoutservice]
 ---
 # [START istio_dual_control_plane_cluster1_deployment_paymentservice]
@@ -121,6 +131,8 @@ spec:
       - env:
         - name: PORT
           value: '50051'
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         image: gcr.io/google-samples/microservices-demo/paymentservice:v0.2.0
         livenessProbe:
           exec:
@@ -142,6 +154,14 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
       terminationGracePeriodSeconds: 5
 # [END istio_dual_control_plane_cluster1_deployment_paymentservice]
 ---
@@ -163,6 +183,8 @@ spec:
       - env:
         - name: PORT
           value: '7000'
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         image: gcr.io/google-samples/microservices-demo/currencyservice:v0.2.0
         livenessProbe:
           exec:
@@ -185,6 +207,14 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
       terminationGracePeriodSeconds: 5
 # [END istio_dual_control_plane_cluster1_deployment_currencyservice]
 ---
@@ -204,6 +234,9 @@ spec:
     spec:
       containers:
       - image: gcr.io/google-samples/microservices-demo/shippingservice:v0.2.0
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         livenessProbe:
           exec:
             command:
@@ -225,6 +258,14 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
 # [END istio_dual_control_plane_cluster1_deployment_shippingservice]
 ---
 # [START istio_dual_control_plane_cluster1_deployment_adservice]
@@ -245,6 +286,8 @@ spec:
       - env:
         - name: PORT
           value: '9555'
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /google/google.json
         image: gcr.io/google-samples/microservices-demo/adservice:v0.2.0
         livenessProbe:
           exec:
@@ -270,6 +313,14 @@ spec:
           requests:
             cpu: 200m
             memory: 180Mi
+          volumeMounts:
+            - mountPath: /google/
+              name: google-volume
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: google-auth
+          name: google-volume
       terminationGracePeriodSeconds: 5
 # [END istio_dual_control_plane_cluster1_deployment_adservice]
 ---
