@@ -69,7 +69,7 @@ spec:
       containers:
       - env:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
-          value: productcatalogservice.default.global:3550
+          value: productcatalogservice.hipster-shop.cluster-2:3550
         - name: SHIPPING_SERVICE_ADDR
           value: shippingservice.default.svc.cluster.local:50051
         - name: PAYMENT_SERVICE_ADDR
@@ -79,7 +79,7 @@ spec:
         - name: CURRENCY_SERVICE_ADDR
           value: currencyservice.default.svc.cluster.local:7000
         - name: CART_SERVICE_ADDR
-          value: cartservice.default.global:7070
+          value: cartservice.hipster-shop.cluster-2:7070
         image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.2.0
         livenessProbe:
           exec:
