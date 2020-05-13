@@ -20,9 +20,9 @@ metadata:
   name: frontendservice-entry
 spec:
   addresses:
-  - 240.0.0.5
+  - 240.0.0.15
   endpoints:
-  - address: 35.193.92.27
+  - address: 10.10.10.37
     ports:
       http1: 15443
   hosts:
@@ -42,9 +42,9 @@ metadata:
   name: productcatalogservice-entry
 spec:
   addresses:
-  - 240.0.0.6
+  - 240.0.0.16
   endpoints:
-  - address: 35.193.92.27
+  - address: 10.10.10.37
     ports:
       grpc: 15443
   hosts:
@@ -64,9 +64,9 @@ metadata:
   name: cartservice-entry
 spec:
   addresses:
-  - 240.0.0.7
+  - 240.0.0.17
   endpoints:
-  - address: 35.193.92.27
+  - address: 10.10.10.37
     ports:
       grpc: 15443
   hosts:
