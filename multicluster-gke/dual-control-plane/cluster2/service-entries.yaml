@@ -20,18 +20,18 @@ metadata:
   name: adservice-entry
 spec:
   addresses:
-  - 240.0.0.2
+  - 240.0.0.12
   endpoints:
-  - address: 34.70.9.157
+  - address: 10.10.10.40
     ports:
       grpc: 15443
   hosts:
-  - adservice.default.global
+  - adservice.hipster-shop.global
   location: MESH_INTERNAL
   ports:
   - name: grpc
     number: 9555
-    protocol: GRPC
+    protocol: TCP
   resolution: DNS
 # [END istio_dual_control_plane_cluster2_serviceentry_adservice_entry]
 ---
@@ -42,18 +42,18 @@ metadata:
   name: checkoutservice-entry
 spec:
   addresses:
-  - 240.0.0.3
+  - 240.0.0.13
   endpoints:
-  - address: 34.70.9.157
+  - address: 10.10.10.40
     ports:
       grpc: 15443
   hosts:
-  - checkoutservice.default.global
+  - checkoutservice.hipster-shop.global
   location: MESH_INTERNAL
   ports:
   - name: grpc
     number: 5050
-    protocol: GRPC
+    protocol: TCP
   resolution: DNS
 # [END istio_dual_control_plane_cluster2_serviceentry_checkoutservice_entry]
 ---
@@ -64,18 +64,18 @@ metadata:
   name: currencyservice-entry
 spec:
   addresses:
-  - 240.0.0.4
+  - 240.0.0.14
   endpoints:
-  - address: 34.70.9.157
+  - address: 10.10.10.40
     ports:
       grpc: 15443
   hosts:
-  - currencyservice.default.global
+  - currencyservice.hipster-shop.global
   location: MESH_INTERNAL
   ports:
   - name: grpc
     number: 7000
-    protocol: GRPC
+    protocol: TCP
   resolution: DNS
 # [END istio_dual_control_plane_cluster2_serviceentry_currencyservice_entry]
 ---
@@ -86,18 +86,18 @@ metadata:
   name: shippingservice-entry
 spec:
   addresses:
-  - 240.0.0.8
+  - 240.0.0.18
   endpoints:
-  - address: 34.70.9.157
+  - address: 10.10.10.40
     ports:
       grpc: 15443
   hosts:
-  - shippingservice.default.global
+  - shippingservice.hipster-shop.global
   location: MESH_INTERNAL
   ports:
   - name: grpc
     number: 50051
-    protocol: GRPC
+    protocol: TCP
   resolution: DNS
 # [END istio_dual_control_plane_cluster2_serviceentry_shippingservice_entry]
 ---
